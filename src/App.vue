@@ -1,24 +1,16 @@
-<template lang="pug">
-  #app
+<template>
+<div id="app">
+  <Mainpage></Mainpage>
+</div>
 </template>
 
 <script>
-
+import Mainpage from './components/Mainpage.vue'
 
 export default {
   name: 'app',
   components: {
+    Mainpage,
   },
 }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
