@@ -1,0 +1,59 @@
+.questionnaire {
+
+  background-color: #60985c;
+  height: 30px;
+
+  &__notify {
+    align-items: center;
+    color: #ffffff;
+    display: flex;
+    font-size: 14px;
+    height: inherit;
+    justify-content: flex-start;
+    padding-right: 44px;
+    position: relative;
+  }
+
+  &__notify-text {
+    overflow: hidden;
+    padding-right: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__notify-button {
+    cursor: pointer;
+    flex-shrink: 0;
+    text-decoration: underline;
+  }
+
+  &__notify-close {
+    cursor: pointer;
+    height: 13px;
+    position: absolute;
+    right: 26px;
+    top: 6px;
+    width: 12px;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:before, &:after {
+      position: absolute;
+      left: 15px;
+      content: ' ';
+      height: 16px;
+      width: 2px;
+      background-color: #ffffff;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}

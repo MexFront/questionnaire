@@ -1,3 +1,18 @@
+//Add font
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
 * {
   box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'PT Sans', sans-serif;
+  height: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1270px;
+  padding: 0 16px;
 }
