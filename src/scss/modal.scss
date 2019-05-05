@@ -158,7 +158,8 @@
   font-weight: 100;
 }
 
-.modal-footer .modal__button-noask {
+.modal-footer .modal__button-noask,
+.modal-footer .modal__button-close {
   background: transparent;
   border: none;
   color: #335bb7;
@@ -166,6 +167,10 @@
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 16px;
   outline: none;
+}
+
+.modal-footer .modal__button-close {
+  font-size: 20px;
 }
 
 

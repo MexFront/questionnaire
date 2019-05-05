@@ -14,38 +14,54 @@
   <Modal
     v-if='showModal'
     @close='closeModal'>
-    <h2 slot="header">Нам важно Ваше мнение!</h2>
-    <div slot="body">
-      <h3>Оцените, пожалуйста, Вашу готовность рекомендовать
-        «Газпромнефть-Корпоративные продажи» своим коллегам / партнерам?</h3>
-      <div>
-        Для оценки используйте 10-балльную шкалу,
-        где 10 – точно готовы рекомендовать, 1 – точно не готовы рекомендовать.
-      </div>
-      <div class="modal__scale">
-        <img src="/images/dislike-3-x.png" />
-        <div class="modal__scale-inner">
-          <span class="modal__mark"
-            v-for='(i, index) in marksTotal'
-            :key='index'>
-            <input
-              v-model='mark'
-              :id='`mark-${index + 1}`'
-              :value='index + 1'
-              type="radio"
-              @change='fill' />
-            <label :for='`mark-${index + 1}`'>{{ index + 1 }}</label>
-          </span>
+    <template v-if='page === 1'>
+      <h2 slot="header">Нам важно Ваше мнение!</h2>
+      <div slot="body">
+        <h3>Оцените, пожалуйста, Вашу готовность рекомендовать
+          «Газпромнефть-Корпоративные продажи» своим коллегам / партнерам?</h3>
+        <div>
+          Для оценки используйте 10-балльную шкалу,
+          где 10 – точно готовы рекомендовать, 1 – точно не готовы рекомендовать.
         </div>
-        <img src="/images/like-3-x.png" />
+        <div class="modal__scale">
+          <img src="/images/dislike-3-x.png" />
+          <div class="modal__scale-inner">
+            <span class="modal__mark"
+              v-for='(i, index) in marksTotal'
+              :key='index'>
+              <input
+                v-model='mark'
+                :id='`mark-${index + 1}`'
+                :value='index + 1'
+                type="radio"
+                @change='fill' />
+              <label :for='`mark-${index + 1}`'>{{ index + 1 }}</label>
+            </span>
+          </div>
+          <img src="/images/like-3-x.png" />
+        </div>
       </div>
-    </div>
-    <div slot="footer">
-      <div class="modal-footer__buttons">
-        <input type="button" value="Отправить" class="modal__button-send" />
-        <input type="button" value="Больше не спрашивать" class="modal__button-noask" />
+      <div slot="footer">
+        <div class="modal-footer__buttons">
+          <input type="button" value="Отправить" class="modal__button-send" />
+          <input type="button" value="Больше не спрашивать" class="modal__button-noask" />
+        </div>
       </div>
-    </div>
+    </template>
+    <template v-if='page === 2'>
+      <h2 slot="header">Почему Вы не поставили оценку 10?</h2>
+      <div slot="body">
+        <div>
+          Выберите не более 3-х ключевых причин.
+        </div>
+      </div>
+      <div slot="footer">
+        <div class="modal-footer__buttons">
+          <input type="button" value="Отправить" class="modal__button-send" />
+          <input type="button" value="Закрыть" class="modal__button-close" />
+        </div>
+      </div>
+    </template>
   </Modal>
 </div>
 </template>
@@ -60,14 +76,11 @@ export default {
     Modal,
   },
 
-  props: {
-
-  },
-
   data() {
     return {
       mark: null,
       showModal: false,
+      page: 2,
       azaza: null,
     }
   },
