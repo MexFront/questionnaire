@@ -114,12 +114,12 @@
   height: 120px;
 }
 
-.modal__mark {
+.modal__rate {
   position: relative;
   top: -20px;
 }
 
-.modal__mark:not(:last-child)::after {
+.modal__rate:not(:last-child)::after {
   content: '';
   color: #335bb7;
   border: 1px solid;
@@ -244,6 +244,7 @@ $checkmark-width: 0.125rem;
 }
 
 .modal-body__textarea::placeholder {
+  color: #b3b3b3;
   font-style: italic;
 }
 

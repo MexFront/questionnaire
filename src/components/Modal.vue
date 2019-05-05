@@ -1,27 +1,27 @@
 <template>
-<transition name="modal">
-  <div class="modal-mask">
-    <div class="modal-wrapper"
-      @click="onWrapperClick">
-      <div class="modal-container"
+<transition name='modal'>
+  <div class='modal-mask'>
+    <div class='modal-wrapper'
+      @click='onWrapperClick'>
+      <div class='modal-container'
         @click.stop>
 
-        <div class="modal-header">
-          <slot name="header">
+        <div class='modal-header'>
+          <slot name='header'>
             default header
           </slot>
         </div>
 
-        <div class="modal-body">
-          <slot name="body">
+        <div class='modal-body'>
+          <slot name='body'>
             default body
           </slot>
         </div>
 
-        <div class="modal-footer">
-          <slot name="footer">
+        <div class='modal-footer'>
+          <slot name='footer'>
             default footer
-            <button class="modal-default-button" @click="$emit('close')">
+            <button class='modal-default-button' @click='$emit("close")'>
               OK
             </button>
           </slot>
@@ -50,6 +50,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "@/scss/modal.scss";
+<style lang='scss'>
+  @import '@/scss/modal.scss';
 </style>
