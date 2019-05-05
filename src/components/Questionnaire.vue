@@ -13,7 +13,6 @@
   </div>
   <Modal
     v-if='showModal'
-    :show='showModal'
     @close='closeModal'>
     <h2 slot="header">Нам важно Ваше мнение!</h2>
     <div slot="body">
