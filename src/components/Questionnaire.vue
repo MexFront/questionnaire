@@ -74,6 +74,27 @@
         </div>
       </div>
     </template>
+    <template v-if='page === 3'>
+      <h2 slot="header">Багодарим за оценку!</h2>
+      <div slot="body">
+        <div>
+          Мы будем признательны, если Вы оставите отзыв или предложение по
+          улучшению работы «Газпромнефть-Корпоративные продажи».
+        </div>
+        <textarea
+          class='modal-body__textarea'
+          maxlength='512'
+          name='review'
+          placeholder='Ваш ответ...'>
+        </textarea>
+      </div>
+      <div slot="footer">
+        <div class="modal-footer__buttons">
+          <input type="button" value="Отправить" class="modal__button-send" />
+          <input type="button" value="Закрыть" class="modal__button-close" />
+        </div>
+      </div>
+    </template>
   </Modal>
 </div>
 </template>
@@ -93,7 +114,7 @@ export default {
     return {
       checkedReasons: [],
       mark: null,
-      page: 2,
+      page: 3,
       questions: null,
       showModal: false,
     }
