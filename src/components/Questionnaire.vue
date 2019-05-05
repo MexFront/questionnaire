@@ -52,6 +52,20 @@
         <div>
           Выберите не более 3-х ключевых причин.
         </div>
+        <div class="modal-body__reasons">
+          <div
+            v-for='reason in reasons'
+            :key='reason.id'
+            class="modal-body__reason">
+            <input
+              v-model='checkedReasons'
+              :id='`reason-${reason.id}`'
+              :disabled='checkedReasons.length > 2 && checkedReasons.indexOf(reason.label) === -1'
+              :value='reason.label'
+              type='checkbox'>
+            <label :for='`reason-${reason.id}`'>{{ reason.label }}</label>
+          </div>
+        </div>
       </div>
       <div slot="footer">
         <div class="modal-footer__buttons">
@@ -77,10 +91,11 @@ export default {
 
   data() {
     return {
+      checkedReasons: [],
       mark: null,
-      showModal: false,
-      page: 1,
+      page: 2,
       questions: null,
+      showModal: false,
     }
   },
 
@@ -93,6 +108,8 @@ export default {
 
   computed: {
     marksTotal() { return new Array(10) },
+
+    reasons() { return this.questions.data.reasons },
   },
 
   methods: {
