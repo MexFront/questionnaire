@@ -22,8 +22,28 @@
         Для оценки используйте 10-балльную шкалу,
         где 10 – точно готовы рекомендовать, 1 – точно не готовы рекомендовать.
       </div>
-      <div>
-        <input type="radio" />
+      <div class="modal__scale">
+        <img src="/images/dislike-3-x.png" />
+        <div class="modal__scale-inner">
+          <span class="modal__mark"
+            v-for='(i, index) in marksTotal'
+            :key='index'>
+            <input
+              v-model='mark'
+              :id='`mark-${index + 1}`'
+              :value='index + 1'
+              type="radio"
+              @change='fill' />
+            <label :for='`mark-${index + 1}`'>{{ index + 1 }}</label>
+          </span>
+        </div>
+        <img src="/images/like-3-x.png" />
+      </div>
+    </div>
+    <div slot="footer">
+      <div class="modal-footer__buttons">
+        <input type="button" value="Отправить" class="modal__button-send" />
+        <input type="button" value="Больше не спрашивать" class="modal__button-noask" />
       </div>
     </div>
   </Modal>
@@ -46,16 +66,24 @@ export default {
 
   data() {
     return {
+      mark: null,
       showModal: false,
+      azaza: null,
     }
+  },
+
+  computed: {
+    marksTotal() { return new Array(10) },
   },
 
   methods: {
     closeModal() { this.showModal = false },
+
+    fill(event) { this.azaza = event.target.value },
   },
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "@/scss/questionnaire.scss";
 </style>
