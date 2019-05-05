@@ -17,8 +17,7 @@
     <template v-if='page === 1'>
       <h2 slot="header">Нам важно Ваше мнение!</h2>
       <div slot="body">
-        <h3>Оцените, пожалуйста, Вашу готовность рекомендовать
-          «Газпромнефть-Корпоративные продажи» своим коллегам / партнерам?</h3>
+        <h3>{{ questions.data.label }}</h3>
         <div>
           Для оценки используйте 10-балльную шкалу,
           где 10 – точно готовы рекомендовать, 1 – точно не готовы рекомендовать.
@@ -33,8 +32,7 @@
                 v-model='mark'
                 :id='`mark-${index + 1}`'
                 :value='index + 1'
-                type="radio"
-                @change='fill' />
+                type="radio" />
               <label :for='`mark-${index + 1}`'>{{ index + 1 }}</label>
             </span>
           </div>
@@ -67,6 +65,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Modal from './Modal.vue'
 
 export default {
@@ -80,9 +79,16 @@ export default {
     return {
       mark: null,
       showModal: false,
-      page: 2,
-      azaza: null,
+      page: 1,
+      questions: null,
     }
+  },
+
+  mounted() {
+    axios
+      .get('questions.json')
+      // eslint-disable-next-line no-return-assign
+      .then(response => (this.questions = response.data))
   },
 
   computed: {
@@ -91,8 +97,6 @@ export default {
 
   methods: {
     closeModal() { this.showModal = false },
-
-    fill(event) { this.azaza = event.target.value },
   },
 }
 </script>
