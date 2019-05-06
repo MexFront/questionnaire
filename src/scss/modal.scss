@@ -252,6 +252,11 @@ $checkmark-width: 0.125rem;
 
 /*Modal-footer*/
 
+.modal-footer__need-rate {
+  color: red;
+  padding-bottom: 6px;
+}
+
 .modal-footer__buttons {
   display: flex;
   justify-content: space-between;

@@ -38,7 +38,8 @@
                 v-model='rate'
                 :id='`rate-${index + 1}`'
                 :value='index + 1'
-                type='radio' />
+                type='radio'
+                @change='needRate = false' />
               <label :for='`rate-${index + 1}`'>{{ index + 1 }}</label>
             </span>
           </div>
@@ -47,6 +48,11 @@
       </div>
       <div slot='footer'>
         <form @submit.prevent='submit'>
+          <div
+            v-if='needRate'
+            class='modal-footer__need-rate'>
+            Выберите оценку от 1 до 10
+          </div>
           <div class='modal-footer__buttons'>
             <input type='submit' value='Отправить' class='modal__button-send' />
             <input
@@ -130,6 +136,7 @@ export default {
   data() {
     return {
       checkedReasons: [],
+      needRate: false,
       notFinished: false,
       page: 1,
       questions: null,
@@ -179,17 +186,28 @@ export default {
         if (!this.notFinished) this.page = 3
       }
 
+      if (this.page === 1 && !this.rate) {
+        this.needRate = true
+        return
+      }
 
       axios.post('/', formData)
 
-      if (this.page === 1 && this.rate === 10) this.page = 3
-      if (this.page === 1 && this.rate > 1 && this.rate <= 9) this.page = 2
+      if (this.page === 1 && this.rate === 10) {
+        this.needRate = false
+        this.page = 3
+      }
+      if (this.page === 1 && this.rate > 1 && this.rate <= 9) {
+        this.needRate = false
+        this.page = 2
+      }
     },
 
     closeModal() {
       this.showModal = false
       this.notFinished = true
       this.submit()
+      this.needRate = false
     },
 
     openModal() {
